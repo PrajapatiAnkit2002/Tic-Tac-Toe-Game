@@ -8,6 +8,10 @@ body{
     text-align: center;
 }
 
+main{
+    margin-top: 10vmin;
+}
+
 .container{
     height: 70vh;
     display: flex;
@@ -33,10 +37,16 @@ body{
     font-size: 8vmin;
     border: none;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3 );
-    color: #b0413e; 
     background-color: #ffffc7;
 }
 
+.X{
+    color: #b0413e; 
+}
+
+.O{
+    color: #6a4c93;
+}
 #reset-btn{
     padding: 1rem;
     font-size: 1.25rem;

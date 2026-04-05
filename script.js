@@ -3,6 +3,8 @@ let reset_btn = document.querySelector("#reset-btn");
 let msg = document.querySelector("#msg");
 let msg_container = document.querySelector(".msg-container");
 let new_btn = document.querySelector("#new-btn");
+let clickCount = 0;
+let winner = false;
 
 let turnO = true;
 let winningPattern = [
@@ -50,8 +52,16 @@ const checkWinner = () => {
             && (pos1Val === pos2Val && pos2Val === pos3Val)){
         
             showWinner(pos1Val);
+            winner =  true;
         }
     }
+}
+
+// if none wins the game so show draw
+const draw = () => {
+    msg.innerText = "Match Draw";
+    msg_container.classList.remove("hide");
+    reset_btn.classList.add("hide");
 }
 
 // iterating on all boxes which one is clicked and showing on UI
@@ -59,18 +69,26 @@ boxes.forEach((box) => {
     box.addEventListener("click", () =>{
         if(turnO){
             box.innerText = "O";
+            box.classList.add("O");
             turnO = false;
+            clickCount++;
         }
         else{
             box.innerText = "X";
+            box.classList.add("X");
             turnO = true;
+            clickCount++;
         }
         // we have to make after click it should not be clickable and change
         box.disabled = true;
 
         // someone is wine or not we have to check that also
-
         checkWinner();
+
+        // checking for draw
+        if(clickCount == 9 && !winner){
+            draw();
+        }
     })
 })
 
