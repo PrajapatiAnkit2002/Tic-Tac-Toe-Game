@@ -84,6 +84,7 @@ boxes.forEach((box) => {
 
         // someone is wine or not we have to check that also
         checkWinner();
+        console.log(clickCount);
 
         // checking for draw
         if(clickCount == 9 && !winner){
@@ -98,6 +99,11 @@ const reset_game = () => {
     msg_container.classList.add("hide");
     reset_btn.classList.remove("hide");
     enableBoxes();
+    clickCount = 0;
+    for(let box of boxes){
+        box.classList.remove('O');
+        box.classList.remove('X');
+    }
 }
 
 new_btn.addEventListener("click", reset_game);
